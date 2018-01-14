@@ -1,0 +1,13 @@
+Dear TornadoKeyboard user
+
+You, or someone supplying your email address have requested to create a TornadoKeyboard user account
+from ip address #{ip}.
+
+Please click the following link to activate your account:
+
+https://www.tornadokeyboard.com/session/create/#{token}
+
+If you didn't request the account creation, feel free to ignore this message.
+
+Regards,
+TornadoKeyboard Configurator
