@@ -8,7 +8,7 @@ import javax.json.JsonObject
 
 data class Session(val id: UUID, val created: LocalDateTime) {
     constructor(json: JsonObject): this(
-            UUID.fromString(json.getString("id")),
+            UUID.fromString(json.getString("id")),w
             LocalDateTime.ofEpochSecond(json.getJsonNumber("created").longValue(), 0, ZoneOffset.UTC)
     )
 

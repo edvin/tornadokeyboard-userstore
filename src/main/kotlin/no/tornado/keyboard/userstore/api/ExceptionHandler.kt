@@ -5,7 +5,8 @@ import javax.ws.rs.core.Response
 import javax.ws.rs.ext.ExceptionMapper
 import javax.ws.rs.ext.Provider
 
-class KeyboardException(val statusCode: Int, message: String) : Exception(message)
+open class KeyboardException(val statusCode: Int, message: String) : Exception(message)
+class AuthenticationError(message: String) : KeyboardException(401, message)
 
 @Provider
 class ExceptionHandler : ExceptionMapper<KeyboardException> {

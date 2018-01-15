@@ -5,7 +5,6 @@ import no.tornado.keyboard.userstore.models.User
 import no.tornado.keyboard.userstore.tools.resourceAsText
 import java.net.InetAddress
 import java.nio.file.Files
-import java.nio.file.Path
 import java.nio.file.Paths
 import java.time.LocalDateTime
 import java.util.*
@@ -67,7 +66,7 @@ class UserService {
         return session
     }
 
-    fun requestNewUser(ip: InetAddress, email: String) {
+    fun requestNewUser(ip: InetAddress, email: String): Long {
         val userFolder = usersFolder.resolve(email)
         if (this.usersFolder.contains(userFolder)) throw IllegalArgumentException("User already exists")
         val token = UUID.randomUUID()
@@ -78,6 +77,8 @@ class UserService {
                 .replace("#{token}", token.toString())
 
         // TODO: Email user the token
+
+        return token.leastSignificantBits.toString().takeLast(6).toLong()
     }
 
     /**
@@ -98,5 +99,21 @@ class UserService {
     @PostConstruct
     fun init() {
         Files.createDirectories(usersFolder)
+    }
+
+    fun deleteUser(user: User) {
+
+    }
+
+    fun deleteSession(id: UUID, user: User) {
+
+    }
+
+    fun listLayouts() {
+
+    }
+
+    fun listSessions(user: User): List<Session> {
+
     }
 }

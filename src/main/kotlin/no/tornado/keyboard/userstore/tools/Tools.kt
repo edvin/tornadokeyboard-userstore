@@ -1,5 +1,7 @@
 package no.tornado.keyboard.userstore.tools
 
+import no.tornado.keyboard.userstore.api.AuthenticationError
+import no.tornado.keyboard.userstore.models.User
 import java.net.InetAddress
 import javax.servlet.http.HttpServletRequest
 
@@ -19,4 +21,10 @@ val HttpServletRequest.ip: InetAddress
             ip = ip.substringBefore(",")
 
         return InetAddress.getByName(ip)
+    }
+
+val HttpServletRequest.user: User
+    get () {
+        throw AuthenticationError("Invalid session")
+//        return null
     }
